@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 310284920}
   - component: {fileID: 310284922}
   - component: {fileID: 310284921}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: bg
   m_TagString: GroundBg
   m_Icon: {fileID: 0}
