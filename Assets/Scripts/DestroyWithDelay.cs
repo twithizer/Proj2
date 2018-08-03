@@ -10,6 +10,4 @@ public class DestroyWithDelay : MonoBehaviour {
 	void Start () {
 		Destroy(gameObject, delay);
 	}
-	
-	
 }
