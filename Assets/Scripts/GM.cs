@@ -11,6 +11,9 @@ public class GM : MonoBehaviour {
 	public Transform spawnPoint;
 	public GameObject playerPrefab;
 
+	public UI ui;
+	GameData data = new GameData();
+
 	PlayerCtrl player;
 
 	public float timeToRespawn = 2f;
@@ -38,6 +41,19 @@ public class GM : MonoBehaviour {
 				player = obj.GetComponent<PlayerCtrl>();
 			}
 		}
+		DisplayHudData();
+	}
+	
+	void DisplayHudData(){
+		if (data.coinCount < 10){
+		ui.hud.txtCoinCount.text = "x 0" + data.coinCount;
+	}
+		else {
+		ui.hud.txtCoinCount.text = "x " + data.coinCount;
+		}
+	}
+	public void IncrementCoinCount(){
+		data.coinCount++;
 	}
 	
 	public void RespawnPlayer(){
