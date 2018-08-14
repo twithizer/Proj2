@@ -69,6 +69,12 @@ public class GM : MonoBehaviour {
 		ui.hud.txtCoinCount.text = "x " + data.coinCount;
 		}
 		ui.hud.txtTimer.text = timeLeft.ToString("F0");
+		if (data.lifeCount < 10){
+		ui.hud.txtLifeCount.text = "x 0" + data.lifeCount;
+	}
+		else {
+		ui.hud.txtLifeCount.text = "x " + data.lifeCount;
+		}
 	}
 	public void IncrementCoinCount(){
 		data.coinCount++;
@@ -78,10 +84,19 @@ public class GM : MonoBehaviour {
 	Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 }
 
+	public void DecrementLives(){
+		data.lifeCount--;
+	}
 	public void KillPlayer(){
 		if (playerPrefab != null){
 			Destroy(player.gameObject);
-			Invoke("RespawnPlayer", timeToRespawn);
+			DecrementLives();
+			if (data.lifeCount > 0){
+				Invoke("RespawnPlayer", timeToRespawn);
+			}
+			else {
+				GameOver();
+			}
 		}
 	}
 
@@ -94,13 +109,13 @@ public class GM : MonoBehaviour {
 
 	void GameOver(){
 		timerOn = false;
+		ui.gameOver.txtTimer.text = "Timer: " + timeLeft.ToString("F0");
 		if (data.coinCount < 10){
 		ui.gameOver.txtCoinCount.text = "Coins: 0" + data.coinCount;
 	}
 		else {
 		ui.gameOver.txtCoinCount.text = "Coins: " + data.coinCount;
 		}
-		ui.hud.txtTimer.text = "Timer: " + timeLeft.ToString("F0");
 		ui.gameOver.gameOverPanel.SetActive(true);
 	}
 }
