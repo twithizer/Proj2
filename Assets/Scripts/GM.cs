@@ -135,5 +135,18 @@ public class GM : MonoBehaviour {
 		}
 		ui.gameOver.gameOverPanel.SetActive(true);
 	}
+
+	public void LevelComplete(){
+		Destroy(player.gameObject);
+		timerOn = false;
+		ui.levelComplete.txtTimer.text = "Timer: " + timeLeft.ToString("F0");
+		if (data.coinCount < 10){
+		ui.levelComplete.txtCoinCount.text = "Coins: 0" + data.coinCount;
+	}
+		else {
+		ui.levelComplete.txtCoinCount.text = "Coins: " + data.coinCount;
+		}
+		ui.levelComplete.levelCompletePanel.SetActive(true);
+	}
 }
 
