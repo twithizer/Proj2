@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GroundBg
   - coin
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Player
   - bg
   - Collectible
-  - 
+  - enemy
   - 
   - 
   - 
